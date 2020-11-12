@@ -1,0 +1,47 @@
+{% extends "main.html" %}
+{% block header %}
+	<title>Forum | Main Page</title>
+{% endblock %}
+{% block body %}
+	<form action="/search-topic" method="POST" name="searchField" onsubmit="return validateSearch();">
+		<input class="ma btn h1 w20" type="text" id="searchbar" name="filter_str" placeholder="Search...">
+		<div class="status" id="search_error" style='color:red;'></div>
+		<button type="submit" id="search_submit" class="btn btn-primary btn-sm">SEARCH</button>
+	</form>
+	<div class="fl w2 must"></div>
+	<div class="fl w20 must topicsbg txt-lrg">
+		<div class="title light">List of Available Topics:</div>
+<!-- Cela doit être invisible si l'utilisateur n'est pas connecté -->
+		{% if login_status == '1' %}
+			<form method="POST" action="/create-topic">
+				<input class="txt-sml" type="newtopic" placeholder="Create new topic..." name='newtopic'>
+				<button class="add txt-sml" type="submit">Add</button>
+			</form>
+		{% else %}
+			<br>
+		{% endif %}
+		<!--  Liste des rubriques de la base de données avec date de création -->
+		{% for item in topics_data %}
+			<!-- <button class="onetopic txt-sml">
+				[Topic Name] [Topic Date]
+			</button> -->
+			<button class="onetopic txt-sml" onClick="window.location.href='/topic/{{item.topic_id}}';">
+				{{item.topic_message}}        <br>Date: {{item.topic_date}}
+			</button>
+		{% endfor %}
+		
+	</div>
+	<div class="fl w2 must"></div>
+	<script>
+		function validateSearch() {
+			let valid = true
+			$("#search_error").html('');
+			let searchField = document.forms["searchField"]["filter_str"].value.trim()
+			if (searchField === '' || searchField == null) {
+				$("#search_error").html('Search field cannot be empty');
+				valid = false
+			}
+			return valid
+		}
+	</script>
+{% endblock %}

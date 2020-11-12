@@ -1,0 +1,569 @@
+/* An external Stylesheet */
+/* Type SELECTORS - Changing defaults*/
+*{
+	box-sizing:border-box;
+	position:relative /* For Jquery*/
+}
+@-ms-viewport {
+  width: device-width; 
+  }
+@viewport {
+  width: device-width; 
+  }
+body,html{
+	height:100%; /* Browser fix for JS */
+}
+html {
+  overflow-y: auto; 
+  }
+body {
+	/* Box adjustments */
+	margin:0;
+	padding:0;
+	line-height: 1.7;
+	font-size: 100%;	 
+	word-spacing:0.5em;
+	/* letter-spacing:0.1em; */
+}
+h1, h2, h3, h4, h5, h6, blockquote {
+  margin: 0; 
+  }
+h1, h2, h3, h4, h5 {
+  font-size: 1.667em;
+  line-height: 1.25em;
+  margin-bottom: 0.2em; 
+ }
+h2 {
+  font-size: 1.575em; 
+  }
+h5 {
+  font-size: 1.375em; 
+  }
+h6 {
+  font-size: 1em; 
+  }
+strong, b, h6 {
+  font-weight: bold; 
+  }
+em, i {
+  font-style: italic; 
+  }
+p {
+  margin: 1.5em 0 1.5em 0;
+  hyphens: auto; 
+  }
+/* Lists
+-------------------------------------------------------------- */
+ol {
+  margin: 0 0 2em;
+  padding-left: 1.125em;
+  list-style-type: decimal; }
+ul {
+  list-style-type: disc;
+  margin: 0 0 2em;
+  padding-left: 1.125em; }
+.footnotes {
+  padding: 1.5em 0 0 1.35em;
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 0.875em;
+  border-top: 0.063rem solid rgba(0, 0, 0, 0.25); }
+/* LINKS
+-------------------------------------------------------------------*/  
+a{
+	text-decoration:none;
+}
+a:hover{
+	text-decoration: underline;
+} 
+/* CLASSES - A shareable style */
+/* STRUCTURE */
+.row{
+	width:100%; /* DEFAULT */
+	height:100%; /* DEFAULT */
+}
+.col{
+	float:left;
+	width:100%; /* DEFAULT */
+	min-height:100%; /* DEFAULT */
+}
+/* NAVIGATION */
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: #333;
+    overflow: hidden;
+	list-style-type:none;
+	display:block;
+	width:100%;
+}
+/* Style the links inside the navigation bar */
+.topnav li {
+    /*float: left;*/
+    display: inline-block;
+    text-align: center;
+    line-height:3em;
+	padding:0 1em;
+    text-decoration: none;
+    font-size: 1em;
+}
+.topnav a{
+	display:inline-block;
+	height:100%;
+}
+/* Change the color of links on hover */
+.topnav li:hover {
+    background-color: #ddd;
+    color: #111;
+}
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
+    display: none;
+}
+.nav1{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	color:#FFF;
+}
+.nav1 li{
+	display:inline-block; /*Shape the line*/
+}
+.nav1 a{
+	text-decoration:none;
+	transition: color 0.2s ease-out;
+}
+.nav1 a:hover{
+	background-color: #a4a4a4;
+}
+/* SHAPE */
+.w1{
+	width: calc(100% * 1/24) !important;
+}
+.w2{
+	width: calc(100% * 2/24) !important;
+}
+.w3{
+	width: calc(100% * 3/24) !important;
+}
+.w4{
+	width: calc(100% * 4/24) !important;
+}
+.w5{
+	width: calc(100% * 5/24) !important;
+}
+.w6{
+	width: calc(100% * 6/24) !important;
+}
+.w7{
+	width: calc(100% * 7/24) !important;
+}
+.w8{
+	width: calc(100% * 8/24) !important;
+}
+.w9{
+	width: calc(100% * 9/24) !important;
+}
+.w10{
+	width: calc(100% * 10/24) !important;
+}
+.w11{
+	width: calc(100% * 11/24) !important;
+}
+.w12{
+	width: calc(100% * 12/24) !important;
+}
+.w13{
+	width: calc(100% * 13/24) !important;
+}
+.w14{
+	width: calc(100% * 14/24) !important;
+}
+.w15{
+	width: calc(100% * 15/24) !important;
+}
+.w16{
+	width: calc(100% * 16/24) !important;
+}
+.w17{
+	width: calc(100% * 17/24) !important;
+}
+.w18{
+	width: calc(100% * 18/24) !important;
+}
+.w19{
+	width: calc(100% * 19/24) !important;
+}
+.w20{
+	width: calc(100% * 20/24) !important;
+}
+.w21{
+	width: calc(100% * 21/24) !important;
+}
+.w22{
+	width: calc(100% * 22/24) !important;
+}
+.w23{
+	width: calc(100% * 23/24) !important;
+}
+.w24{
+	width: 100% !important;
+}
+.h1{
+	height:calc(100% * 1/24) !important;
+	min-height:calc(100% * 1/24) !important;
+}
+.h1a{
+	height:calc(100vh * 1/24) !important;
+	min-height:calc(100vh * 1/24) !important;
+}
+.h2{
+	height:calc(100% * 2/24) !important;
+	min-height:calc(100% * 2/24) !important;
+}
+.h2a{
+	height:calc(100vh * 2/24) !important;
+	min-height:calc(100vh * 2/24) !important;
+}
+.h3{
+	height:calc(100% * 3/24) !important;
+	min-height:calc(100% * 3/24) !important;
+}
+.h3a{
+	height:calc(100vh * 3/24) !important;
+	min-height:calc(100vh * 3/24) !important;
+}
+.h4{
+	height:calc(100% * 4/24) !important;
+	min-height:calc(100% * 4/24) !important;
+}
+.h4a{
+	height:calc(100vh * 4/24) !important;
+	min-height:calc(100vh * 4/24) !important;
+}
+.h5{
+	height:calc(100% * 5/24) !important;
+	min-height:calc(100% * 5/24) !important;
+}
+.h5a{
+	height:calc(100vh * 5/24) !important;
+	min-height:calc(100vh * 5/24) !important;
+}
+.h6{
+	height:calc(100% * 6/24) !important;
+	min-height:calc(100% * 6/24) !important;
+}
+.h6a{
+	height:calc(100vh * 6/24) !important;
+	min-height:calc(100vh * 6/24) !important;
+}
+.h7{
+	height:calc(100% * 7/24) !important;
+	min-height:calc(100% * 7/24) !important;
+}
+.h7a{
+	height:calc(100vh * 7/24) !important;
+	min-height:calc(100vh * 7/24) !important;
+}
+.h8{
+	height:calc(100% * 8/24) !important;
+	min-height:calc(100% * 8/24) !important;
+}
+.h8a{
+	height:calc(100vh * 8/24) !important;
+	min-height:calc(100vh * 8/24) !important;
+}
+.h9{
+	height:calc(100% * 9/24) !important;
+	min-height:calc(100% * 9/24) !important;
+}
+.h9a{
+	height:calc(100vh * 9/24) !important;
+	min-height:calc(100vh * 9/24) !important;
+}
+.h10{
+	height:calc(100% * 10/24) !important;
+	min-height:calc(100% * 10/24) !important;
+}
+.h10a{
+	height:calc(100vh * 10/24) !important;
+	min-height:calc(100vh * 10/24) !important;
+}
+.h11{
+	height:calc(100% * 11/24) !important;
+	min-height:calc(100% * 11/24) !important;
+}
+.h11a{
+	height:calc(100vh * 11/24) !important;
+	min-height:calc(100vh * 11/24) !important;
+}
+.h12{
+	height:calc(100% * 12/24) !important;
+	min-height:calc(100% * 12/24) !important;
+}
+.h12a{
+	height:calc(100vh * 12/24) !important;
+	min-height:calc(100vh * 12/24) !important;
+}
+.h13{
+	height:calc(100% * 13/24) !important;
+	min-height:calc(100% * 13/24) !important;
+}
+.h13a{
+	height:calc(100vh * 13/24) !important;
+	min-height:calc(100vh * 13/24) !important;
+}
+.h14{
+	height:calc(100% * 14/24) !important;
+	min-height:calc(100% * 14/24) !important;
+}
+.h14a{
+	height:calc(100vh * 14/24) !important;
+	min-height:calc(100vh * 14/24) !important;
+}
+.h15{
+	height:calc(100% * 15/24) !important;
+	min-height:calc(100% * 15/24) !important;
+}
+.h15a{
+	height:calc(100vh * 15/24) !important;
+	min-height:calc(100vh * 15/24) !important;
+}
+.h16{
+	height:calc(100% * 16/24) !important;
+	min-height:calc(100% * 16/24) !important;
+}
+.h16a{
+	height:calc(100vh * 16/24) !important;
+	min-height:calc(100vh * 16/24) !important;
+}
+.h17{
+	height:calc(100% * 17/24) !important;
+	min-height:calc(100% * 17/24) !important;
+}
+.h17a{
+	height:calc(100vh * 17/24) !important;
+	min-height:calc(100vh * 17/24) !important;
+}
+.h18{
+	height:calc(100% * 18/24) !important;
+	min-height:calc(100% * 18/24) !important;
+}
+.h18a{
+	height:calc(100vh * 18/24) !important;
+	min-height:calc(100vh * 18/24) !important;
+}
+.h19{
+	height:calc(100% * 19/24) !important;
+	min-height:calc(100% * 19/24) !important;
+}
+.h19a{
+	height:calc(100vh * 19/24) !important;
+	min-height:calc(100vh * 19/24) !important;
+}
+.h20{
+	height:calc(100% * 20/24) !important;
+	min-height:calc(100% * 20/24) !important;
+}
+.h20a{
+	height:calc(100vh * 20/24) !important;
+	min-height:calc(100vh * 20/24) !important;
+}
+.h21{
+	height:calc(100% * 21/24) !important;
+	min-height:calc(100% * 21/24) !important;
+}
+.h21a{
+	height:calc(100vh * 21/24) !important;
+	min-height:calc(100vh * 21/24) !important;
+}
+.h22{
+	height:calc(100% * 22/24) !important;
+	min-height:calc(100% * 22/24) !important;
+}
+.h22a{
+	height:calc(100vh * 22/24) !important;
+	min-height:calc(100vh * 22/24) !important;
+}
+.h23{
+	height:calc(100% * 23/24) !important;
+	min-height:calc(100% * 23/24) !important;
+}
+.h23a{
+	height:calc(100vh * 23/24) !important;
+	min-height:calc(100vh * 23/24) !important;
+}
+.h24{
+	height:calc(100% * 24/24) !important;
+	min-height:calc(100% * 24/24) !important;
+}
+.h24a{
+	height:calc(100vh * 24/24) !important;
+	min-height:calc(100vh * 24/24) !important;
+}
+/* FONT ADJUSTMENTS  */
+.txt-vsml{
+	font-size:0.6em;
+}
+.txt-sml{
+	font-size:0.8em;
+}
+.bodytext{
+	font-size:14px;
+	font-size:100%;
+}
+.txt-med{
+	font-size:1.2em;
+}
+.txt-lrg{
+	font-size:1.5em;
+}
+.txt-vlrg{
+	font-size:1.8em;
+}
+.expanded{
+	word-spacing:0.2em;
+}
+.light{
+	color:#fff;
+}
+.dark{
+	color:#000;
+}
+.invert{
+	color:#fff;	
+	background: #000;
+}
+.light-ts{
+	text-shadow:1px 1px 2px #fff;
+}
+.dark-ts{
+	text-shadow:1px 1px 2px #000;
+}
+.light-ol{
+	/* OUTLINES */
+    text-shadow:
+    -1px -1px 0 #fff,
+    1px -1px 0 #fff,
+    -1px 1px 0 #fff,
+    1px 1px 0 #fff;  
+}
+.dark-ol{
+	/* OUTLINES */
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  
+}
+/* POSITION */
+/* CONTENT */
+.txt-c{
+		text-align:center;
+	}
+.txt-l{
+		text-align:left;
+	}
+.txt-r{
+		text-align:right;
+	}
+.txt-j{
+		text-align:justified;
+	}
+.p-sml{
+		padding:0.25em;
+	}
+.p-med{
+		padding:0.5em;
+	}
+.p-lrg{
+		padding:0.75em;
+	}
+.p-vlrg{
+		padding:1em;
+	}
+.p-tb{
+		padding-left:0;
+		padding-right:0;
+	}
+.p-lr{
+		padding-top:0;
+		padding-bottom:0;
+	}	
+/* BOX */
+.ma{
+		/* For block elements less than 100% */
+		display:block;
+		margin-left:auto;
+		margin-right:auto;
+	}
+.ib{
+		display:inline-block;
+		float:none;
+	}
+.fl{
+		float:left;
+	}
+.fr{
+		float:right;
+	}
+.cb{
+		clear:both;
+	}
+.cl{
+		clear:left;
+	}
+.cr{
+		clear:right;
+	}
+.m-sml{
+		margin:0.25em;
+	}
+.m-med{
+		margin:0.5em;
+	}
+.m-lrg{
+		margin:0.75em;
+	}
+.m-vlrg{
+		margin:1em;
+	}
+.m-tb{
+		margin-left:0;
+		margin-right:0;
+	}
+.m-lr{
+		margin-top:0;
+		margin-bottom:0;
+	}
+/* BORDER */
+.hairline{
+	border:1px solid #404040;
+}
+.outline{
+	border:0.2em solid #404040;
+}
+.polaroid{
+	border:0.5em solid #fff;
+}
+.pill {
+	border-radius:10px;
+}
+.circle {
+	/* Box must be square, else Oval shape*/
+	border-radius:calc(100% * 5);
+}
+.shadow{
+	box-shadow: 0.2em 0.2em 1em #c0c0c0;
+	max-width:99.5%;
+}	
+/* BUTTON */
+.btn{
+	cursor:pointer;
+}
+.btn:hover{
+	opacity:0.6;
+}
+.m{
+	width:99% !important;	
+	margin-left:auto;
+	margin-right:auto;
+}

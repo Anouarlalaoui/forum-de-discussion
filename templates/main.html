@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<link rel="stylesheet CSS" type="text/css" href="{{url_for('static', filename='custom-styles.css')}}">
+	<link rel="stylesheet CSS" type="text/css" href="{{url_for('static', filename='styles.css')}}">
+	<link rel="shortcut ICON" type="x-icon" href="{{url_for('static', filename='favicon.ico')}}">
+
+	<link rel="stylesheet Bootstrap" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	{% block header %}{% endblock %}
+</head>
+<body>
+	{% block message%}
+	{% with messages = get_flashed_messages()%} 
+		{% if messages %}
+			{% for message in messages %}
+				<div class="txt-c">
+				<label><b>{{message}}</b></label>
+				<button class="txt-med">Ok</button>
+				</div>
+			{% endfor%}
+		{% endif %}
+	{% endwith%}
+	{% endblock %}
+	<ul id="myTopnav" class="topnav nav1 h2 p-med">
+		<a class="light option_icon"><img src="{{url_for('static', filename='logo.ico')}}" alt="F"></a>
+		<a class="light icon" href="javascript:void(0);" onclick="myCollapse()"><i class="fa fa-bars option_icon"></i></a>
+		{% if login_status != '1' %}
+			<button onclick="document.getElementById('reg').style.display='block'" style="width:auto; float:right;">Register</button>
+			<button onclick="document.getElementById('log').style.display='block'" class="navbtn">Login</button>
+		{% else %}
+			<button onclick="window.location.href='{{ url_for('logout') }}';" class="navbtn">Logout</button>
+		{% endif %}
+	</ul>
+	<!-- Some of this is from bootstrap -->
+	<!-- register exit button doesnt work -->
+	<div id="log" class="pop">
+	  <form class="pop-content animate" action="/login" method="post">
+		<div class="loginsize">
+		  <label for="uname"><b>Username</b></label><span onclick="document.getElementById('log').style.display='none'" class="close">&times;</span>
+		  <input type="username" placeholder="Enter Username" name="uname" required>
+		  <label for="psw"><b>Password</b></label>
+		  <input type="password" placeholder="Enter Password" name="psw" required>
+		  <button type="submit">Login</button>
+		</div>
+	  </form>
+	</div>
+	
+	<div id="reg" class="pop">
+	  <form class="pop-content animate" action="/register" method="post" name="registrationform" onsubmit="return validateRegistration();">
+		<div class="loginsize">
+		  <label for="uname"><b>Username</b></label> <span onclick="document.getElementById('log').style.display='none'" class="close">&times;</span>
+		  <input type="username" id="username" placeholder="Enter Username" onchange="validateUsername();" name="uname" required>
+		  <input type="hidden" id="alreadyusername" name="alreadyusername" value="1"/> 
+          <div class="status" id="username_error" style='color:red;'></div>
+
+		  <label for="psw"><b>Password</b></label>
+		  <input type="password" id="password" placeholder="Enter Password" name="psw" required>
+		  <div class="status" id="password_error" style='color:red;'></div>
+
+		  <label for="psw"><b>Confirm Password</b></label>
+		  <input type="password" id="cpassword" placeholder="Password" name="cpsw" required>
+		  <div class="status" id="cpassword_error" style='color:red;'></div>
+
+		  <button type="submit" id="registerButton">Register</button>
+		</div>
+	  </form>
+	</div>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script language="javascript">
+// Réduire la barre de navigation
+		function myCollapse() {
+		  var x = document.getElementById("myTopnav");
+		  if (x.className === "topnav") {
+			x.className += " responsive";
+		  } else {
+			x.className = "topnav";
+		  }
+		}
+// S'inscrire
+		var pop = document.getElementById('reg');
+		window.onclick = function(event) {
+			if (event.target == pop) {
+				pop.style.display = "none";
+			}
+		}
+// valider le nom d'utilisateur
+		function validateUsername() {
+			var username=$("#username").val().trim();
+              if(username!=""){
+                $.ajax({url: "{{ url_for('validate_user_name') }}", type: 'POST',
+                  data: { username: username} ,
+
+                success: function(result){
+                  if(result=="1"){
+                      $("#username_error").html('')
+                      $("#alreadyusername").val(result) 
+                  }else{
+                    $("#username_error").html(result)
+                    $("#alreadyusername").val(result)
+                  }
+                 
+              }});
+            }
+		}
+// valide la longueur du nom d'utilisateur, la longueur du mot de passe et la correspondance confirme le mot de passe
+		function validateRegistration(){
+			console.log('inside validateRegistration')
+            console.log('--------------------')
+            var result = true;
+			$("#username_error").html('');
+            $("#password_error").html('');
+            $("#cpassword_error").html('');
+			var username = document.forms["registrationform"]["uname"].value.trim();
+			var password = document.forms["registrationform"]["psw"].value.trim();
+			var cpassword = document.forms["registrationform"]["cpsw"].value.trim();
+			var username_validation = document.forms["registrationform"]["alreadyusername"].value.trim();
+			console.log('==>', username_validation)
+			if (username_validation == 'Username is not available') {
+				console.log('username validattion with existing username')
+				$("#username_error").html('Username is not available, please select another one');
+				result = false;
+			}
+			if (username==null || username=="") {
+				console.log('username validation')
+				$("#username_error").html('Please enter your username');
+				result = false;
+            } else {
+				if (username.length > 20) {
+					$("#username_error").html('Username cannot be greater than 20 characters');
+					result = false;
+				}
+			}
+			if (password==null || password==""){
+				console.log('password validation')
+				$("#password_error").html('Please enter your password');
+				result = false;
+        	} else {
+				if (password.length > 25) {
+					$("#password_error").html('Password cannot be greater than 25 characters');
+					result = false;
+				}
+			}
+			if(cpassword==null || cpassword==""){
+				console.log('confirm password validation')
+				$("#cpassword_error").html('Please enter your confirm password');
+				result = false;
+            } else {
+				if (cpassword !== password) {
+					$("#cpassword_error").html("Confirm password didn't match");
+					result = false;
+				}
+			}
+			return result
+		}
+// S'identifier
+		var pop = document.getElementById('log');
+		window.onclick = function(event) {
+			if (event.target == pop) {
+				pop.style.display = "none";
+			}
+		}
+// Barre de recherche
+		// function SearchBar() {
+		// 	var search, filter, ul, li, a, i, txtValue;
+		// 	search = document.getElementById("searchbar");
+		// 	filter = search.value.toUpperCase();
+		// 	ul = document.getElementById("myUL"); //<!--replace myUL with a list from database of topics and all that-->
+		// 	li = ul.getElementsByTagName("li");
+		// 	for (i = 0; i < li.length; i++) {
+		// 		a = li[i].getElementsByTagName("a")[0];
+		// 		txtValue = a.textContent || a.innerText;
+		// 		if (txtValue.toUpperCase().indexOf(filter) > -1) {
+		// 			li[i].style.display = "";
+		// 		} else {
+		// 			li[i].style.display = "none";
+		// 		}
+		// 	}
+		// }
+	</script>
+	{% block body %}{% endblock %}
+</body>
+</html>

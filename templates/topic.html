@@ -1,0 +1,47 @@
+{% extends "main.html" %}
+{% block header %}
+	<title>Forum | Topic Page</title>
+{% endblock %}
+{% block body %}
+	<form action="/search-claim/{{data.topic_id}}" method="POST" name="searchField" onsubmit="return validateSearch();">
+		<input class="ma btn h1 w20" type="text" id="searchbar" name="filter_str" placeholder="Search...">
+		<div class="status" id="search_error" style='color:red;'></div>
+		<button type="submit" id="search_submit" class="btn btn-primary btn-sm">SEARCH</button>
+	</form>
+	<div class="fl w2 must"></div>
+	<div class="fl w20 must topicsbg txt-lrg">
+		<div class="title light">
+			<p>{{data.topic_message}}</p>
+			<p>Posted By: {{data.topic_by}}</p>
+		</div>
+		
+		{% if login_status == '1' %}
+			<!-- <input class="txt-sml" type="new" placeholder="Create new claim...">
+			<button class="add txt-sml">Add</button> -->
+			<form method="POST" action="/create-claim">
+				<input type="hidden" id="topic_id" name="topic_id" value={{data.topic_id}}>
+				<input class="txt-sml" type="newtopic" placeholder="Create new claim..." name='newclaim'>
+				<button class="add txt-sml" type="submit">Add</button>
+			</form>
+		{% endif %}
+		{% for item in data.claims %}
+			<button class="onetopic txt-sml" onClick="window.location.href='/claim/{{item.claim_id}}';">
+				{{item.claim_message}}        <br>Date: {{item.claim_date}}
+			</button>
+		{% endfor %}
+		
+	</div>
+	<div class="fl w2 must"></div>
+	<script>
+		function validateSearch() {
+			let valid = true
+			$("#search_error").html('');
+			let searchField = document.forms["champderecherche"]["filter_str"].value.trim()
+			if (searchField === '' || searchField == null) {
+				$("#search_error").html('Le champ de recherche ne peut pas être vide');
+				valid = false
+			}
+			return valid
+		}
+	</script>
+{% endblock %}

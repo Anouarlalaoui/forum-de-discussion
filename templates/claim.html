@@ -1,0 +1,58 @@
+{% extends "main.html" %}
+{% block header %}
+	<title>Forum | Claim Page</title>
+{% endblock %}
+{% block body %}
+	<form action="/search-reply/{{data.claim_id}}" method="POST" name="searchField" onsubmit="return validateSearch();">
+		<input class="ma btn h1 w20" type="text" id="searchbar" name="filter_str" placeholder="Search...">
+		<div class="status" id="search_error" style='color:red;'></div>
+		<button type="submit" id="search_submit" class="btn btn-primary btn-sm">SEARCH</button>
+	</form>
+	<div class="fl w2 must"></div>
+	<div class="fl w20 must topicsbg txt-lrg">
+		<div class="title light">
+			<p>{{data.topic_message}}</p>
+			<p>Posted By: {{data.topic_by}}</p>
+        </div>
+		<div class="title light">
+            <p>{{data.claim_message}}</p>
+            <p>Created on: {{data.claim_date}}</p>
+            <p>Posted By: {{data.claim_by}}</p>
+		</div>
+		{% if login_status == '1' %}
+		<form method="POST" action="/create-reply">
+			<select name="choice" id="choice">
+				<option value="" disabled selected>Choisir...</option>
+				<option value="Clarification">Clarification</option>
+				<option value="Supporting Argument">Supporting Argument</option>
+				<option value="Counterargument">Counterargument</option>
+			</select>
+			<br>
+            <input type="hidden" id="claim_id" name="claim_id" value={{data.claim_id}}>
+            <input class="txt-sml" type="newreply" placeholder="Type in your response" name='newreply'>
+            <button class="add txt-sml" type="submit">Add</button>
+        </form>
+		{% endif %}
+
+        {% for item in data.replies %}
+			<button class="onetopic txt-sml">
+                {{item.reply_message}}        <br>Date: {{item.reply_date}}
+                <br>Posted By: {{item.reply_by}}
+			</button>
+		{% endfor %}
+		
+	</div>
+	<div class="fl w2 must"></div>
+	<script>
+		function validateSearch() {
+			let valid = true
+			$("#search_error").html('');
+			let searchField = document.forms["searchField"]["filter_str"].value.trim()
+			if (searchField === '' || searchField == null) {
+				$("#search_error").html('Search field cannot be empty');
+				valid = false
+			}
+			return valid
+		}
+	</script>
+{% endblock %}
