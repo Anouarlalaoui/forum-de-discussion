@@ -1,24 +1,24 @@
 # Debate-Forum
 Un forum afin de débattre sur plusieur sujets.
 
-##Technologies utilisées:
-Backend: Python / Flask avec modèle Jinga2
-Base de données: MySQL
-Frontend: HTML, CSS, Bootstrap, Jquery
+                                    ##Technologies utilisées:
+                                    Backend: Python / Flask avec modèle Jinga2
+                                    Base de données: MySQL
+                                    Frontend: HTML, CSS, Bootstrap, Jquery
 
-##Vous souhaitez exécuter ce projet, voici les étapes:
-Étape 1: Cloner le projet
-Étape 2: Installez les dépendances avec la commande suivante:
-pip install -r requirements.txt
+                                    ##Vous souhaitez exécuter ce projet, voici les étapes:
+                                    Étape 1: Cloner le projet
+                                    Étape 2: Installez les dépendances avec la commande suivante:
+                                    pip install -r requirements.txt
 
-Étape 3: Créez le fichier .env dans le projet où les informations d'identification seront stockées
-MYSQL_HOST = votre_nom_hôte MYSQL_USER = votre_utilisateur MYSQL_PASSWORD = votre_mot de passe MYSQL_DB = votre_db
+                                    Étape 3: Créez le fichier .env dans le projet où les informations d'identification seront stockées
+                                    MYSQL_HOST = votre_nom_hôte MYSQL_USER = votre_utilisateur MYSQL_PASSWORD = votre_mot de passe MYSQL_DB = votre_db
 
-Étape 4: exécutez la commande suivante pour exécuter le projet maintenant
-python app.py
+                                    Étape 4: exécutez la commande suivante pour exécuter le projet maintenant
+                                    python app.py
 
-Étape 5: Terminé
-Les contributions et suggestions sont les bienvenues
+                                    Étape 5: Terminé
+                                    Les contributions et suggestions sont les bienvenues
 
 #####POURQUOI FLASK ?
 
@@ -71,28 +71,40 @@ Le fichier app.py contient les itinéraires suivants:
 
 A. / index:
      La page d'accueil est rendue par ce qui contient tous les sujets de discussion. Les utilisateurs peuvent également créer un sujet s'ils sont connectés. Cette page contient également une option d'inscription et de connexion.
+
 B. / connexion:
      Route de connexion pour l'utilisateur avec nom d'utilisateur et mot de passe
+
 C. / registre:
      Route pour enregistrer un nouvel utilisateur avec un nouveau nom d'utilisateur et mot de passe et fait également la validation de l'utilisateur existant
+
 D. / sujet de recherche:
      Itinéraire de recherche des sujets de la page d'accueil avec les mots-clés donnés
+
 E. validate_user_name:
      Utilisé pour valider si l'utilisateur existe déjà ou non lors de l'inscription
+
 F. / déconnexion:
      Déconnexion de l'utilisateur
+
 G. / create-topic:
      Route pour créer un nouveau sujet, enregistre le sujet et également l'utilisateur qui a créé le sujet avec la date et l'heure de création du sujet
+
 H. / create-claim:
      Route pour créer une revendication du sujet donné et enregistre également l'utilisateur qui l'a créé avec la date et l'heure de la création
+
 I. / topic / <topic_id>:
    Route de vérification du détail du sujet spécifique avec les revendications faites sur ce sujet, avec les autres informations comme l'utilisateur qui l'a créé au moment de la création.
+
 J. / search-claim / <topic_id>:
    Rechercher les revendications d'un sujet donné avec les mots-clés spécifiques
+
 K. / créer-réponse:
     Route pour créer la réponse de la revendication donnée et également enregistrer le type de réponse avec l'utilisateur qui l'a créée ainsi que la date / heure de création
+
 L. / claim / <claim_id>:
     Route pour vérifier les détails des revendications avec toutes les réponses sur cette revendication donnée avec d'autres informations comme l'utilisateur qui l'a créée et datetime
+
 M. @ app.errorhandler (404):
    Gestionnaire d'erreurs pour l'erreur 404
 
